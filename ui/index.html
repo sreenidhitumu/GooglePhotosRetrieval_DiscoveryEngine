@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Photos Visual Retrieval Discovery Engine | Research Workstation</title>
+  <meta name="description" content="AI-Powered Discovery Engine for Google Photos visual retrieval research. Ingest, extract, cluster, and discover retrieval problem archetypes.">
+  
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand-icon">
+        <i class="fas fa-search-location"></i>
+      </div>
+      <div class="brand-title">
+        <h1>Google Photos Discovery</h1>
+        <span>Visual Retrieval Research Engine</span>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button class="tab-btn active" data-view="dashboard" id="nav-tab-dashboard">
+        <i class="fas fa-chart-pie"></i> Dashboard
+      </button>
+      <button class="tab-btn" data-view="opportunities" id="nav-tab-opportunities">
+        <i class="fas fa-trophy"></i> Opportunities
+      </button>
+      <button class="tab-btn" data-view="explorer" id="nav-tab-explorer">
+        <i class="fas fa-table-list"></i> Record Explorer
+      </button>
+    </nav>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="app-container">
+
+    <!-- VIEW 1: DASHBOARD -->
+    <section id="dashboard-view" class="view-section active">
+      <div style="margin-bottom: 1.5rem;">
+        <h2 style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700;">Research Overview & Metrics</h2>
+        <p style="color: var(--text-secondary); font-size: 0.9rem;">Overview of multi-source canonical evidence corpus (4,139 records), classification yield, and research baseline.</p>
+      </div>
+
+      <!-- Stat Cards Grid -->
+      <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <div class="stat-card">
+          <div class="stat-header">
+            <span>Canonical Records</span>
+            <div class="stat-icon"><i class="fas fa-database"></i></div>
+          </div>
+          <div class="stat-value" id="stat-canonical-count">4,139</div>
+          <div class="stat-subtext">Multi-source canonical corpus</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-header">
+            <span>Validated Relevant</span>
+            <div class="stat-icon" style="color: var(--accent-success); background: rgba(16, 185, 129, 0.1);"><i class="fas fa-check-double"></i></div>
+          </div>
+          <div class="stat-value" id="stat-relevant-count">375</div>
+          <div class="stat-subtext" id="stat-relevance-rate">Relevant records across all sources</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-header">
+            <span>Research Themes</span>
+            <div class="stat-icon" style="color: #a78bfa; background: rgba(139, 92, 246, 0.1);"><i class="fas fa-cubes"></i></div>
+          </div>
+          <div class="stat-value" id="stat-clusters-count">5</div>
+          <div class="stat-subtext">Validated research themes</div>
+        </div>
+      </div>
+
+      <!-- Top Opportunities Preview on Dashboard -->
+      <div style="margin-top: 1.5rem; margin-bottom: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+          <h3 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: #fff;">
+            <i class="fas fa-trophy" style="color: var(--accent-warning); margin-right: 8px;"></i> Validated Research Opportunities
+          </h3>
+          <button class="btn-secondary" onclick="switchView('opportunities')" style="font-size: 0.85rem;">
+            View All Opportunities <i class="fas fa-arrow-right" style="margin-left: 4px;"></i>
+          </button>
+        </div>
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+          Validated research themes identified within the 375 relevant record corpus across all sources. Core MVP opportunity <strong>T2</strong> targets the fragmentary-memory retrieval gap.
+        </p>
+        <div class="opportunities-grid" id="dashboard-opportunities-container">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- Sources Breakdown -->
+      <div style="margin-top: 1rem;">
+        <div class="stat-card">
+          <h3 style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; color: #fff;">
+            <i class="fas fa-layer-group" style="color: var(--accent-secondary); margin-right: 8px;"></i> Sources Breakdown
+          </h3>
+          <div id="sources-distribution" style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <!-- Rendered dynamically by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: OPPORTUNITIES -->
+    <section id="opportunities-view" class="view-section">
+      <div style="margin-bottom: 1.5rem;">
+        <h2 style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700;">Validated Research Opportunities</h2>
+        <p style="color: var(--text-secondary); font-size: 0.9rem;">Validated research themes identified within the 375 relevant record corpus across all 4 sources. Surfacing <strong>T2 (Imprecise Visual Memory Gap)</strong> as the Core MVP Opportunity.</p>
+      </div>
+
+      <div class="opportunities-grid" id="opportunities-container">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- VIEW 3: RECORD EXPLORER -->
+    <section id="explorer-view" class="view-section">
+      <div style="margin-bottom: 1.5rem;">
+        <h2 style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700;">Evidence Record Explorer</h2>
+        <p style="color: var(--text-secondary); font-size: 0.9rem;">Filter by validated research themes and inspect canonical text across all sources.</p>
+      </div>
+
+      <!-- Controls & Filter Bar -->
+      <div class="explorer-controls">
+        <div class="search-box">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="search-input" placeholder="Search body or title text...">
+        </div>
+
+        <select id="filter-theme" class="filter-select" style="border-color: var(--accent-primary);">
+          <option value="">All Research Themes</option>
+          <option value="T2_fuzzy_visual_memory">T2 — Visual Memory Gap (Core MVP)</option>
+          <option value="T1_search_ai_regression">T1 — Search & AI Regression</option>
+          <option value="T3_library_integrity">T3 — Missing / Unsynced Media</option>
+          <option value="T4_query_metadata_power">T4 — Query Expressiveness & Metadata</option>
+          <option value="T5_ephemeral_memories">T5 — Ephemeral Memories & Collages</option>
+          <option value="OTHER">OTHER — General UX / Storage / Permission Issues</option>
+        </select>
+
+        <select id="filter-source" class="filter-select">
+          <option value="">All Sources</option>
+          <option value="reddit">Reddit</option>
+          <option value="google_play">Google Play Store</option>
+          <option value="youtube">YouTube Comments</option>
+          <option value="app_store">Apple App Store</option>
+        </select>
+      </div>
+
+      <!-- Data Table -->
+      <div class="table-container">
+        <table class="records-table">
+          <thead>
+            <tr>
+              <th>Source</th>
+              <th>Content Snippet</th>
+              <th>Assigned Research Theme</th>
+              <th>Posted Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="records-tbody">
+            <!-- Rendered by JS -->
+          </tbody>
+        </table>
+
+        <!-- Table Pagination -->
+        <div class="pagination-container">
+          <div id="pagination-info">Showing 0 of 0 records</div>
+          <div class="page-buttons">
+            <button id="prev-page-btn" class="btn-secondary" disabled><i class="fas fa-chevron-left"></i> Previous</button>
+            <button id="next-page-btn" class="btn-secondary" disabled>Next <i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RECORD DETAIL MODAL -->
+  <div class="modal-overlay" id="detail-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title" id="modal-title">Record Evidence Detail</div>
+        <button class="modal-close" id="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Rendered dynamically by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript App Logic -->
+  <script src="js/app.js?v=9"></script>
+</body>
+</html>

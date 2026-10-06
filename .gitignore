@@ -1,0 +1,43 @@
+# Environment and secrets
+.env
+.env.local
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# Data (local ingest and processed artifacts)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+!data/processed/discovery.db
+
+# Databases
+*.db
+!data/processed/discovery.db
+*.sqlite
+*.sqlite3
+
+# IDE and OS
+.idea/
+.vscode/
+.DS_Store
+
+# Test / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# UI (Phase 6)
+ui/node_modules/
+ui/dist/

@@ -1,0 +1,15 @@
+[
+  {
+    "id": "t1_sample01",
+    "parsedId": "sample01",
+    "url": "https://www.reddit.com/r/googlephotos/comments/abc/sample01/",
+    "username": "test_user",
+    "communityName": "r/googlephotos",
+    "parsedCommunityName": "googlephotos",
+    "title": "Cannot find old screenshot",
+    "body": "I remember the photo but Google Photos search won&#39;t surface it.",
+    "createdAt": "2026-01-15T12:00:00.000Z",
+    "scrapedAt": "2026-09-29T17:00:00.000Z",
+    "dataType": "comment"
+  }
+]

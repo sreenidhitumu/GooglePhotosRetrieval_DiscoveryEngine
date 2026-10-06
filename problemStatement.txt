@@ -1,0 +1,94 @@
+Problem Statement: AI-Powered Discovery Engine for Google Photos Retrieval
+Objective
+Build an AI-powered research engine to understand why users struggle to retrieve old photos, videos, screenshots, and documents from Google Photos when they remember the visual memory but cannot precisely describe it.
+The engine should analyze public user conversations at scale and identify:
+What types of visual memories users struggle to retrieve
+What users remember vs. what they have forgotten
+How do users formulate searches when their memory is incompleteWhere retrieval breaks down
+Where retrieval breaks down
+What workarounds users use
+Recurring retrieval problem patterns and potential opportunity areas
+The system must discover the problem from evidence rather than assume a solution upfront.
+Data Sources
+The system should support multiple public sources, including:
+Reddit: I will provide an Apify-scraped JSON dataset of approximately 1,000 records.
+YouTube: I will provide a YouTube API key for collecting relevant public videos/comments.
+Google Play Store: Collect publicly available Google Photos reviews where feasible, with imported datasets supported as a fallback.
+Apple App Store: Collect publicly available Google Photos reviews where feasible, with imported datasets supported as a fallback.
+Other relevant public sources may be added if useful, such as Google Photos Community/support discussions and public forums.
+AI Analysis
+Use an LLM to identify records genuinely relevant to vaguely remembered visual-content retrieval(questions provided within the objective) and extract structured information about the user's retrieval experience.
+The system should identify relevant records using a balanced relevance criterion—not so broad that unrelated Google Photos complaints dominate, and not so narrow that useful retrieval experiences are lost.
+The target is to identify at least 150–200 relevant records, or more where the available data supports it, for downstream problem identification.
+Use Gemini as the primary LLM. The system must use efficient batch processing and avoid unnecessary LLM calls because only limited/free API access is available. Groq may be supported as an optional alternative.
+System Workflow
+The discovery engine should follow this overall workflow:
+Data Ingestion
+Load the provided Reddit dataset.
+Collect relevant YouTube data using the provided API.
+Collect or ingest Google Play Store and App Store review data where feasible.
+Support additional public sources through a modular ingestion process.
+Preprocessing
+Normalize records from different sources into a common structure.
+Remove duplicates and obvious noise.
+Preserve source metadata and original user content.
+Store raw data separately from processed data.
+Relevance Identification
+Use a combination of deterministic filtering and LLM-based classification.
+Identify records that contain meaningful evidence about vague or incomplete visual-content retrieval.
+Process records in batches to minimize LLM/API usage.
+Preserve the original record and its relevance classification.
+User Experience Extraction
+For relevant records, use the LLM to extract structured information such as:
+Retrieval scenario
+What the user remembers
+What the user has forgotten
+Search/retrieval attempt
+Retrieval failure point
+Workaround
+Outcome
+Pattern Discovery
+Analyze the structured records to identify recurring retrieval behaviors, failure modes, and memory patterns.
+Group records into meaningful retrieval problem archetypes.
+Do not impose a final taxonomy or solution beforehand.
+Opportunity Analysis
+Compare identified problem areas using evidence such as frequency, severity/friction, consistency across sources, and strength of supporting evidence.
+Surface potential opportunity areas for further user research.
+Research Interface & Export
+Present the findings through a simple researcher-facing interface.
+Allow exploration from high-level clusters down to individual source records.
+Enable filtering, comparison, and export of the analysed data and findings.
+Discovery Output
+The engine should transform:
+Raw conversations → Relevant retrieval experiences → Structured user behaviors → Retrieval problem clusters → Opportunity areas
+For each relevant record, preserve the original source evidence and identify, where available:
+Retrieval scenario
+What the user remembers
+What they do not remember
+Search/retrieval attempt
+Retrieval failure point
+Workaround
+Outcome
+The system should then cluster relevant experiences into recurring retrieval problem archetypes and compare opportunity areas using evidence from the underlying records.
+Required Application
+Build a usable interface that allows the researcher to:
+View source and record counts
+Explore relevant records
+Filter by retrieval problem, memory type, source, etc.
+Inspect original user evidence
+Explore identified clusters
+Compare opportunity areas
+Export the analysed dataset and findings
+The system must preserve traceability from every major insight back to the underlying user records.
+Constraints
+Do not assume the final user problem or solution.
+Do not build a generic Google Photos search engine.
+Do not rely solely on sentiment analysis or keyword frequency.
+Do not invent information missing from source records.
+Keep raw data separate from LLM-generated analysis.
+Make processing resumable and efficient under free-tier LLM/API limits.
+Expected Outcome
+The final system should provide an evidence base that can answer:
+“When users vaguely remember a visual memory, what prevents them from successfully retrieving it, and which retrieval failure represents the strongest opportunity for further user research?”
+The output will be used as the foundation for the next stages of the project: 5–6 user interviews, problem definition, and selection of an AI-native MVP.
+
